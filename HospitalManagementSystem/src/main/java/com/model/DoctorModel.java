@@ -11,6 +11,7 @@ public class DoctorModel {
     private String specialization;
     private int experience;
     private long mobile;
+    private String email;
     private String password;
 
 }
