@@ -16,7 +16,7 @@ import com.service.DoctorService;
 import com.service.DoctorServiceImpl;
 
 @WebServlet("/doctorprofile")
-public class DoctorProfileController extends HttpServlet {
+public class PatientProfileController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 	HttpServletResponse response)
