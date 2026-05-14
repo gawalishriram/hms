@@ -1,0 +1,27 @@
+package com.service;
+
+import java.util.List;
+
+import com.model.PatientModel;
+import com.repository.PatientRegRepo;
+import com.repository.PatientRegRepoImpl;
+
+public class RegisterPatientImpl implements RegisterPatient{
+
+	PatientRegRepo patientRegRepo=new PatientRegRepoImpl();
+	@Override
+	public boolean addPatient(PatientModel model) {
+		
+		return patientRegRepo.addPatient(model);
+	}
+	@Override
+	public boolean getPatientLogin(String email, String password) {
+		// TODO Auto-generated method stub
+		return patientRegRepo.getPatientLogin(email, password);
+	}
+	
+	
+	
+	
+
+}

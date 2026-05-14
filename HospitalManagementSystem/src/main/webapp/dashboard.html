@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hospital Management System</title>
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<style>
+body {
+	background: #eef3f9;
+	font-family: 'Segoe UI', sans-serif;
+}
+
+/* NAVBAR */
+.navbar {
+	background: linear-gradient(90deg, #1d3557, #2a9d8f);
+}
+
+.navbar-brand {
+	font-weight: bold;
+	color: white !important;
+	font-size: 24px;
+}
+
+/* HERO SECTION */
+.hero {
+	background: linear-gradient(135deg, #1d3557, #2a9d8f);
+	color: white;
+	padding: 80px 40px;
+	border-radius: 20px;
+	text-align: center;
+	margin-top: 20px;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hero h1 {
+	font-size: 50px;
+	font-weight: 700;
+}
+
+.hero p {
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+/* CARD */
+.card {
+	border: none;
+	border-radius: 18px;
+	transition: 0.3s;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+	transform: translateY(-6px);
+}
+
+/* TITLES */
+.title {
+	text-align: center;
+	font-weight: bold;
+	color: #1d3557;
+	margin: 50px 0 25px;
+}
+
+/* INFO BOX */
+.info-box {
+	background: white;
+	padding: 25px;
+	border-radius: 16px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+/* SECTION HEADER */
+.section-head {
+	font-weight: 700;
+	color: #2a9d8f;
+}
+
+/* FEATURE ICON */
+.feature-icon {
+	font-size: 45px;
+	color: #2a9d8f;
+}
+
+/* FOOTER */
+footer {
+	margin-top: 60px;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+
+		<div class="container">
+
+			<a class="navbar-brand" href="#"> Hospital Management System </a>
+
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+
+				<ul class="navbar-nav ms-auto align-items-center">
+
+					<li class="nav-item"><a class="nav-link text-white" href="#">
+							Home </a></li>
+
+					<li class="nav-item"><a class="nav-link text-white"
+						href="#services"> Services </a></li>
+
+					<li class="nav-item"><a class="nav-link text-white"
+						href="#features"> Features </a></li>
+
+					<li class="nav-item"><a class="nav-link text-white"
+						href="#about"> About </a></li>
+
+					<li class="nav-item"><a class="nav-link text-white"
+						href="#contact"> Contact </a></li>
+
+					<li class="nav-item ms-3"><a href="index.html"
+						class="btn btn-warning"> Login </a></li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</nav>
+
+	<!-- HERO -->
+	<div class="container">
+
+		<div class="hero">
+
+			<h1>Smart Hospital Management System</h1>
+
+			<p>Efficient, Secure & Modern Healthcare Platform</p>
+
+			<p>Manage appointments, patient records, doctor schedules, and
+				hospital workflows with an easy-to-use digital platform.</p>
+
+			<div class="mt-4">
+
+				<a href="patientRegister.html" class="btn btn-light btn-lg me-2">
+
+					Register Patient </a> <a href="doctorRegister.html"
+					class="btn btn-warning btn-lg"> Register Doctor </a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- ABOUT HOME -->
+	<div class="container mt-5">
+
+		<div class="info-box">
+
+			<h2 class="section-head">Welcome to Our Hospital System</h2>
+
+			<p class="mt-3">The Hospital Management System is a smart digital
+				platform designed to simplify healthcare management. This system
+				helps hospitals efficiently manage patients, doctors, appointments,
+				medical records, and healthcare operations.</p>
+
+			<p>Patients can register, login, and access healthcare services
+				easily. Doctors can manage patient records and appointments. The
+				system reduces paperwork and improves communication between doctors
+				and patients.</p>
+
+			<p>This project is designed for educational and academic purposes
+				using Java, JSP, Servlets, JDBC, MySQL, HTML, CSS, and Bootstrap.</p>
+
+		</div>
+
+	</div>
+
+	<!-- REGISTER PORTAL -->
+	<div class="container mt-5">
+
+		<h2 class="title">Register Portal</h2>
+
+		<div class="row">
+
+			<!-- PATIENT -->
+			<div class="col-md-6 mb-4">
+
+				<div class="card p-4 text-center">
+
+					<i class="bi bi-person feature-icon"></i>
+
+					<h4 class="text-success section-head mt-3">Patient Module</h4>
+
+					<p>Register, book appointments, and track doctors easily.</p>
+
+					<a href="patientRegister.html" class="btn btn-success w-100">
+
+						Register Patient </a>
+
+				</div>
+
+			</div>
+
+			<!-- DOCTOR -->
+			<div class="col-md-6 mb-4">
+
+				<div class="card p-4 text-center">
+
+					<i class="bi bi-heart-pulse feature-icon"></i>
+
+					<h4 class="text-primary section-head mt-3">Doctor Module</h4>
+
+					<p>Manage patients, schedules, and healthcare appointments.</p>
+
+					<a href="doctorRegister.html" class="btn btn-primary w-100">
+
+						Register Doctor </a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- SERVICES -->
+	<div class="container mt-5" id="services">
+
+		<h2 class="title">Hospital Services</h2>
+
+		<div class="row">
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box text-center">
+
+					<i class="bi bi-hospital feature-icon"></i>
+
+					<h5 class="section-head mt-3">Emergency Care</h5>
+
+					<p>24/7 emergency medical services.</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box text-center">
+
+					<i class="bi bi-capsule feature-icon"></i>
+
+					<h5 class="section-head mt-3">Pharmacy</h5>
+
+					<p>Fast and reliable medicine support.</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box text-center">
+
+					<i class="bi bi-clipboard2-pulse feature-icon"></i>
+
+					<h5 class="section-head mt-3">Diagnostics</h5>
+
+					<p>Modern laboratory and testing facilities.</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- FEATURES -->
+	<div class="container mt-5" id="features">
+
+		<h2 class="title">Key Features</h2>
+
+		<div class="info-box">
+
+			<ul>
+
+				<li>✔ Smart online appointment booking</li>
+
+				<li>✔ Separate patient & doctor dashboards</li>
+
+				<li>✔ Secure authentication system</li>
+
+				<li>✔ Easy hospital workflow management</li>
+
+				<li>✔ Digital patient records</li>
+
+				<li>✔ Modern responsive design</li>
+
+				<li>✔ Fast and secure database handling</li>
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<!-- ABOUT -->
+	<div class="container mt-5" id="about">
+
+		<h2 class="title">About Hospital System</h2>
+
+		<div class="info-box">
+
+			<h5 class="section-head">What is this system?</h5>
+
+			<p>A Hospital Management System is a digital healthcare platform
+				that connects patients, doctors, and hospital staff.</p>
+
+			<h5 class="section-head mt-4">Why is it important?</h5>
+
+			<p>It improves hospital efficiency, reduces paperwork, and
+				provides better healthcare management.</p>
+
+			<h5 class="section-head mt-4">Main Goal</h5>
+
+			<p>To provide fast, secure, and smart healthcare management
+				services.</p>
+
+		</div>
+
+	</div>
+
+	<!-- WHY CHOOSE -->
+	<div class="container mt-5">
+
+		<h2 class="title">Why Choose Our System?</h2>
+
+		<div class="row text-center">
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box">
+
+					<h5 class="section-head">Fast</h5>
+
+					<p>Quick appointment processing and patient management.</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box">
+
+					<h5 class="section-head">Secure</h5>
+
+					<p>Protected login system and safe patient data storage.</p>
+
+				</div>
+
+			</div>
+
+			<div class="col-md-4 mb-4">
+
+				<div class="info-box">
+
+					<h5 class="section-head">Modern</h5>
+
+					<p>Responsive and user-friendly interface for hospitals.</p>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- CONTACT -->
+	<div class="container mt-5" id="contact">
+
+		<h2 class="title">Contact Us</h2>
+
+		<div class="info-box text-center">
+
+			<h5 class="section-head">Hospital Contact Information</h5>
+
+			<p>📍 Pune, Maharashtra</p>
+
+			<p>📞 +91 9876543210</p>
+
+			<p>📧 hospital@gmail.com</p>
+
+		</div>
+
+	</div>
+
+	<!-- FOOTER -->
+	<footer class="bg-dark text-white text-center p-3"> Hospital
+		Management System © 2026 | Designed for Academic Project </footer>
+
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
