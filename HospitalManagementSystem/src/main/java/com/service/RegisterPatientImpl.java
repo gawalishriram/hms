@@ -30,6 +30,11 @@ public class RegisterPatientImpl implements RegisterPatient{
 		
 		return  patientRegRepo.getUpdatePatient(model);
 	}
+	@Override
+	public boolean getChangePasswordPatient(String email,String password) {
+		
+		return patientRegRepo.getChangePasswordPatient(email,password);
+	}
 	
 	
 	

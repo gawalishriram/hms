@@ -98,6 +98,23 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 		return false;
 	}
 
+	@Override
+	public boolean getChangePasswordPatient(String email,String password) {
+		try
+		{
+			pst=con.prepareStatement("update patients set password=? where email=?");
+			pst.setString(1, password);
+			pst.setString(2, email);
+			int val=pst.executeUpdate();
+			return val>0 ? true:false;
+		}
+		catch (Exception e) {
+
+		}
+
+		return false;
+	}
+
 	
 
 

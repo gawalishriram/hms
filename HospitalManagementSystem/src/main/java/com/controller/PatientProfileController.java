@@ -51,7 +51,6 @@ public class PatientProfileController extends HttpServlet {
 		request.setAttribute("includePage", "yes");
 
 		RequestDispatcher rd = request.getRequestDispatcher("patientdashboard");
-
 		rd.include(request, response);
 
 		out.println("<div class='container-fluid'>");
@@ -59,10 +58,7 @@ public class PatientProfileController extends HttpServlet {
 		out.println("<div class='card-body p-4'>");
 
 		out.println("<h2 class='text-success mb-4 fw-bold'>Patient Profile</h2>");
-
-		// FORM START
 		out.println("<form action='updatepatient' method='post'>");
-
 		out.println("<table class='table table-bordered table-hover'>");
 
 		out.println("<tr class='table-success'>");
@@ -102,7 +98,7 @@ public class PatientProfileController extends HttpServlet {
 
 		out.println("</table>");
 
-		// UPDATE BUTTON
+		
 		out.println("<button type='submit' class='btn btn-success'>Update Profile</button>");
 
 		out.println("</form>");

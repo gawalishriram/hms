@@ -9,5 +9,6 @@ public interface PatientRegRepo {
 	public boolean getPatientLogin(String email,String password);
 	public PatientModel getPatientByEmail(String email);
 	public boolean getUpdatePatient(PatientModel model);
+	public boolean getChangePasswordPatient(String email,String password);
 	
 }
