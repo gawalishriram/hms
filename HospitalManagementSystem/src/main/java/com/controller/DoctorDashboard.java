@@ -18,6 +18,7 @@ public class DoctorDashboard extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html");
+
         PrintWriter out = response.getWriter();
 
         // SESSION CHECK
@@ -80,7 +81,8 @@ public class DoctorDashboard extends HttpServlet {
 
         out.println("<a href='viewPatients'>View Patients</a>");
 
-        out.println("<a href='doctorProfile'>Profile</a>");
+        // IMPORTANT CHANGE HERE
+        out.println("<a href='doctorprofile'>Profile</a>");
 
         out.println("<a href='changePasswordDoctor'>Change Password</a>");
 
@@ -88,7 +90,7 @@ public class DoctorDashboard extends HttpServlet {
 
         out.println("</div>");
 
-        // MAIN
+        // MAIN CONTENT
         out.println("<div class='main-content'>");
 
         // TOPBAR
@@ -120,6 +122,7 @@ public class DoctorDashboard extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
+
         doGet(request, response);
     }
 }

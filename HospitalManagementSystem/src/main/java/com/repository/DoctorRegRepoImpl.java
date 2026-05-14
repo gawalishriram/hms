@@ -1,6 +1,7 @@
 package com.repository;
 
 import com.model.DoctorModel;
+import com.model.PatientModel;
 
 public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo{
 
@@ -44,5 +45,38 @@ public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo{
 		}
 		return false;
 	}
+
+	@Override
+	public DoctorModel getDoctorByEmail(String email) {
+		try
+		{
+			pst = con.prepareStatement("select * from doctors where email=?");
+			pst.setString(1, email);
+
+			rs = pst.executeQuery();
+
+			if(rs.next())
+			{
+				DoctorModel model = new DoctorModel();
+
+				model.setId(rs.getInt(1));
+				model.setName(rs.getString(2));
+				model.setSpecialization(rs.getString(3));
+				model.setExperience(rs.getInt(4));
+				model.setMobile(rs.getLong(5));
+				model.setEmail(rs.getString(6));
+				model.setPassword(rs.getString(7));
+
+				return model;
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+
+		return null;
+	}
+	
 
 }
