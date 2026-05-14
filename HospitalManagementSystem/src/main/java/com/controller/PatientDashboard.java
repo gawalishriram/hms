@@ -134,7 +134,7 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("<a href='profilepatient'>Patient Profile</a>");
 
-		out.println("<a href='changePassword'>Change Password</a>");
+		out.println("<a href='changepatientpassword'>Change Password</a>");
 
 		out.println("<a href='logout'>Logout</a>");
 

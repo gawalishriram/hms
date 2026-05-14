@@ -11,11 +11,11 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import com.model.DoctorModel;
-import com.service.DoctorService;
-import com.service.DoctorServiceImpl;
+import com.model.PatientModel;
+import com.service.RegisterPatient;
+import com.service.RegisterPatientImpl;
 
-@WebServlet("/doctorprofile")
+@WebServlet("/profilepatient")
 public class PatientProfileController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
@@ -23,7 +23,6 @@ public class PatientProfileController extends HttpServlet {
 	throws ServletException, IOException {
 
 		response.setContentType("text/html");
-
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession(false);
@@ -40,31 +39,29 @@ public class PatientProfileController extends HttpServlet {
 			return;
 		}
 
-		DoctorService service = new DoctorServiceImpl();
+		RegisterPatient service = new RegisterPatientImpl();
 
-		DoctorModel doctor = service.getDoctorByEmail(email);
+		PatientModel patient = service.getPatientByEmail(email);
 
-		if(doctor == null) {
-			out.println("<h2>Doctor Not Found</h2>");
+		if(patient == null) {
+			out.println("<h2>Patient Not Found</h2>");
 			return;
 		}
 
 		request.setAttribute("includePage", "yes");
 
-		RequestDispatcher rd = request.getRequestDispatcher("doctordashboard");
+		RequestDispatcher rd = request.getRequestDispatcher("patientdashboard");
 
 		rd.include(request, response);
 
 		out.println("<div class='container-fluid'>");
-
 		out.println("<div class='card shadow-lg border-0 rounded-4'>");
-
 		out.println("<div class='card-body p-4'>");
 
-		out.println("<h2 class='text-success mb-4 fw-bold'>Doctor Profile</h2>");
+		out.println("<h2 class='text-success mb-4 fw-bold'>Patient Profile</h2>");
 
-		// FORM START
-		out.println("<form action='updatedoctor' method='post'>");
+		
+		out.println("<form action='updatepatient' method='post'>");
 
 		out.println("<table class='table table-bordered table-hover'>");
 
@@ -73,39 +70,39 @@ public class PatientProfileController extends HttpServlet {
 		out.println("<th>Details</th>");
 		out.println("</tr>");
 
-		// NAME
 		out.println("<tr>");
 		out.println("<th>Name</th>");
-		out.println("<td><input type='text' name='name' class='form-control' value='"+doctor.getName()+"'></td>");
+		out.println("<td><input type='text' name='name' class='form-control' value='"+patient.getName()+"'></td>");
 		out.println("</tr>");
 
-		// SPECIALIZATION
 		out.println("<tr>");
-		out.println("<th>Specialization</th>");
-		out.println("<td><input type='text' name='specialization' class='form-control' value='"+doctor.getSpecialization()+"'></td>");
+		out.println("<th>Age</th>");
+		out.println("<td><input type='number' name='age' class='form-control' value='"+patient.getAge()+"'></td>");
 		out.println("</tr>");
 
-		// EXPERIENCE
 		out.println("<tr>");
-		out.println("<th>Experience</th>");
-		out.println("<td><input type='number' name='experience' class='form-control' value='"+doctor.getExperience()+"'></td>");
+		out.println("<th>Gender</th>");
+		out.println("<td><input type='text' name='gender' class='form-control' value='"+patient.getGender()+"'></td>");
 		out.println("</tr>");
 
-		// MOBILE
 		out.println("<tr>");
 		out.println("<th>Mobile</th>");
-		out.println("<td><input type='text' name='mobile' class='form-control' value='"+doctor.getMobile()+"'></td>");
+		out.println("<td><input type='text' name='mobile' class='form-control' value='"+patient.getMobile()+"'></td>");
 		out.println("</tr>");
 
-		// EMAIL
 		out.println("<tr>");
 		out.println("<th>Email</th>");
-		out.println("<td><input type='email' readonly name='email' class='form-control' value='"+doctor.getEmail()+"'></td>");
+		out.println("<td><input type='email' readonly name='email' class='form-control' value='"+patient.getEmail()+"'></td>");
+		out.println("</tr>");
+
+		out.println("<tr>");
+		out.println("<th>Disease</th>");
+		out.println("<td><input type='text' name='disease' class='form-control' value='"+patient.getDisease()+"'></td>");
 		out.println("</tr>");
 
 		out.println("</table>");
 
-		// UPDATE BUTTON
+		
 		out.println("<button type='submit' class='btn btn-success'>Update Profile</button>");
 
 		out.println("</form>");
