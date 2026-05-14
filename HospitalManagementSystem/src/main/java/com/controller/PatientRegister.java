@@ -50,7 +50,7 @@ public class PatientRegister extends HttpServlet {
         if (result) {
         	    HttpSession session = request.getSession();
         	    session.setAttribute("patient", name);
-        	    response.sendRedirect("patientDashboard.html");
+        	    response.sendRedirect("patientdashboard");
         	
         } else {
             out.println("<h3>Registration Failed</h3>");

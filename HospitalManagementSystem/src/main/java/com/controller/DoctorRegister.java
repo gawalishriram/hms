@@ -1,5 +1,6 @@
 package com.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,7 +27,8 @@ public class DoctorRegister extends HttpServlet {
 		String name=request.getParameter("name");
 		String speci=request.getParameter("specialization");
 		int exp=Integer.parseInt(request.getParameter("experience"));
-		long mobile = Long.parseLong(request.getParameter("mobile"));		
+		long mobile = Long.parseLong(request.getParameter("mobile"));
+		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		
 		DoctorService doctorService=new DoctorServiceImpl();
@@ -35,11 +37,14 @@ public class DoctorRegister extends HttpServlet {
 		model.setSpecialization(speci);
 		model.setExperience(exp);
 		model.setMobile(mobile);
+		model.setEmail(email);
 		model.setPassword(password);
 		boolean result=doctorService.addDoctor(model);
 		if(result)
 		{
-			out.println("doctor register");
+			RequestDispatcher r=request.getRequestDispatcher("doctordashboard");
+			r.forward(request, response);
+			//out.println("doctor register");
 		}
 		else
 		{
