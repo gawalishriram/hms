@@ -19,6 +19,17 @@ public class RegisterPatientImpl implements RegisterPatient{
 		// TODO Auto-generated method stub
 		return patientRegRepo.getPatientLogin(email, password);
 	}
+	@Override
+	public PatientModel getPatientByEmail(String email) {
+		// TODO Auto-generated method stub
+		return  patientRegRepo.getPatientByEmail(email);
+	}
+	
+	@Override
+	public boolean getUpdatePatient(PatientModel model) {
+		
+		return  patientRegRepo.getUpdatePatient(model);
+	}
 	
 	
 	

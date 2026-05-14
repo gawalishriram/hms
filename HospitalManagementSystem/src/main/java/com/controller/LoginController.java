@@ -41,14 +41,14 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("email", email);
 			response.sendRedirect("patientdashboard");
+			return;
 		}
-		
-		if(role.equals("doctor") && doctorResult)
+		else if(role.equals("doctor") && doctorResult)
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("email", email);
 			response.sendRedirect("doctordashboard");
-
+			return;
 		}
 		else
 		{

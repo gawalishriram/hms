@@ -12,5 +12,10 @@ public class DoctorServiceImpl implements DoctorService {
 		
 		return doctorRegRepo.addDoctor(model);
 	}
+	@Override
+	public boolean getDoctorLogin(String email, String password) {
+		// TODO Auto-generated method stub
+		return doctorRegRepo.getDoctorLogin(email, password);
+	}
 
 }
