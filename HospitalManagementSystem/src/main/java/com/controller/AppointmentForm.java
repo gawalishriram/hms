@@ -28,7 +28,7 @@ public class AppointmentForm extends HttpServlet {
 
 		
 		String id = request.getParameter("id");
-
+		String dname = request.getParameter("name");
 		
 		HttpSession session =
 		request.getSession(false);
@@ -167,6 +167,8 @@ public class AppointmentForm extends HttpServlet {
 
 		// PATIENT NAME
 		out.println("<div class='mb-4'><label class='form-label'>Patient Name</label><input type='text' value='"+patientName+"' name='patientName' class='form-control bg-light' readonly></div>");
+
+		out.println("<div class='mb-4'><label class='form-label'>Doctor Name</label><input type='text' value='"+dname+"' name='dName' class='form-control bg-light' readonly></div>");
 
 		// DATE
 		out.println("<div class='mb-4'><label class='form-label'>Appointment Date</label><input type='date' name='appointmentdate' class='form-control' required></div>");

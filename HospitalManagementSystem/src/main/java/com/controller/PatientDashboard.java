@@ -128,7 +128,7 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("<a href='bookappointment'>Book Appointment</a>");
 
-		out.println("<a href='viewAppointments'>My Appointments</a>");
+		out.println("<a href='viewpatientappointment'>My Appointments</a>");
 
 		out.println("<a href='profilepatient'>Patient Profile</a>");
 
