@@ -29,4 +29,13 @@ public class DoctorServiceImpl implements DoctorService {
     public DoctorModel getDoctorByEmail(String email) {
         return doctorRegRepo.getDoctorByEmail(email);
     }
+
+	@Override
+	public boolean changeDoctorPassword(String email, String oldPassword, String newPassword) {
+		
+		return doctorRegRepo.changeDoctorPassword(
+				email,
+				oldPassword,
+				newPassword);
+	}
 }

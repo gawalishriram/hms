@@ -13,4 +13,8 @@ public interface DoctorRegRepo {
     List<DoctorModel> getAllDoctors();
 
     DoctorModel getDoctorByEmail(String email);
+    public boolean changeDoctorPassword(
+    		String email,
+    		String oldPassword,
+    		String newPassword);
 }
