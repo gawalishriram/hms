@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 
 import com.repository.PatientRegRepo;
 import com.repository.PatientRegRepoImpl;
+import com.service.RegisterPatient;
+import com.service.RegisterPatientImpl;
 
 @WebServlet("/patientchangepassword")
 public class PatientChangePassword extends HttpServlet {
@@ -22,8 +24,8 @@ public class PatientChangePassword extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		
-		PatientRegRepo patientRegRepo=new PatientRegRepoImpl();
-		boolean result=patientRegRepo.getChangePasswordPatient(email, password);
+		RegisterPatient patient=new RegisterPatientImpl();
+		boolean result=patient.getChangePasswordPatient(email, password);
 		
 		if(result)
 		{

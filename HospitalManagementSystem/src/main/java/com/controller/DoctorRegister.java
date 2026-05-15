@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import com.model.DoctorModel;
 import com.service.DoctorService;
 import com.service.DoctorServiceImpl;
-
+import jakarta.servlet.http.HttpSession;
 @WebServlet("/doctorreg")
 public class DoctorRegister extends HttpServlet {
 	
@@ -42,9 +42,13 @@ public class DoctorRegister extends HttpServlet {
 		boolean result=doctorService.addDoctor(model);
 		if(result)
 		{
+			HttpSession session = request.getSession();
+
+			session.setAttribute("email", email);
+
 			RequestDispatcher r=request.getRequestDispatcher("doctordashboard");
+
 			r.forward(request, response);
-			//out.println("doctor register");
 		}
 		else
 		{

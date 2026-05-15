@@ -32,10 +32,9 @@ public class BookAppointment extends HttpServlet {
 
 		r.include(request, response);
 
-		DoctorService service =
-		new DoctorServiceImpl();
+		DoctorService service =new DoctorServiceImpl();
 
-		List<DoctorModel> model = service.getAllDoctor();
+		List<DoctorModel> model = service.getAllDoctors();
 
 		out.println("<html>");
 

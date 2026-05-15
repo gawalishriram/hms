@@ -44,16 +44,12 @@ public class PatientPassword extends HttpServlet {
 
 		request.setAttribute("includePage", "yes");
 
-		RequestDispatcher r =
-		request.getRequestDispatcher("patientdashboard");
-
+		RequestDispatcher r =request.getRequestDispatcher("patientdashboard");
 		r.include(request, response);
 
-		RegisterPatient patient =
-		new RegisterPatientImpl();
+		RegisterPatient patient =new RegisterPatientImpl();
 
-		PatientModel model =
-		patient.getPatientByEmail(email);
+		PatientModel model =patient.getPatientByEmail(email);
 
 		out.println("<div class='container-fluid'>");
 

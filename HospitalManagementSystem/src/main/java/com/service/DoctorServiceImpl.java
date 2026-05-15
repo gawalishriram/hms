@@ -8,21 +8,25 @@ import com.repository.DoctorRegRepoImpl;
 
 public class DoctorServiceImpl implements DoctorService {
 
-	DoctorRegRepo doctorRegRepo=new DoctorRegRepoImpl();
-	@Override
-	public boolean addDoctor(DoctorModel model) {
-		
-		return doctorRegRepo.addDoctor(model);
-	}
-	@Override
-	public boolean getDoctorLogin(String email, String password) {
-		// TODO Auto-generated method stub
-		return doctorRegRepo.getDoctorLogin(email, password);
-	}
-	@Override
-	public List<DoctorModel> getAllDoctor() {
-		// TODO Auto-generated method stub
-		return doctorRegRepo.getAllDoctors();
-	}
+    DoctorRegRepo doctorRegRepo = new DoctorRegRepoImpl();
 
+    @Override
+    public boolean addDoctor(DoctorModel model) {
+        return doctorRegRepo.addDoctor(model);
+    }
+
+    @Override
+    public boolean getDoctorLogin(String email, String password) {
+        return doctorRegRepo.getDoctorLogin(email, password);
+    }
+
+    @Override
+    public List<DoctorModel> getAllDoctors() {
+        return doctorRegRepo.getAllDoctors();
+    }
+
+    @Override
+    public DoctorModel getDoctorByEmail(String email) {
+        return doctorRegRepo.getDoctorByEmail(email);
+    }
 }

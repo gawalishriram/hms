@@ -20,8 +20,8 @@ public class PatientDashboard extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
-
-		HttpSession session = request.getSession(false);
+		
+		HttpSession session =request.getSession(false);
 
 		if(session == null)
 		{
@@ -29,8 +29,7 @@ public class PatientDashboard extends HttpServlet {
 			return;
 		}
 
-		String email =
-		(String) session.getAttribute("email");
+		String email =(String)session.getAttribute("email");
 
 		if(email == null)
 		{
@@ -38,8 +37,7 @@ public class PatientDashboard extends HttpServlet {
 			return;
 		}
 
-		String includePage =
-		(String) request.getAttribute("includePage");
+		String includePage = (String)request.getAttribute("includePage");
 
 		out.println("<!DOCTYPE html>");
 
@@ -57,19 +55,63 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("<style>");
 
-		out.println("body{margin:0;font-family:Segoe UI,sans-serif;background:#f4f6f9;}");
 
-		out.println(".sidebar{position:fixed;left:0;top:0;width:250px;height:100vh;background:#198754;padding-top:20px;}");
+		out.println("body{");
+		out.println("margin:0;");
+		out.println("font-family:Segoe UI,sans-serif;");
+		out.println("background:#f4f6f9;");
+		out.println("}");
 
-		out.println(".sidebar h3{color:white;text-align:center;margin-bottom:30px;font-weight:bold;}");
 
-		out.println(".sidebar a{display:block;color:white;padding:14px 20px;text-decoration:none;transition:0.3s;font-size:16px;}");
+		out.println(".sidebar{");
+		out.println("position:fixed;");
+		out.println("left:0;");
+		out.println("top:0;");
+		out.println("width:250px;");
+		out.println("height:100vh;");
+		out.println("background:#198754;");
+		out.println("padding-top:20px;");
+		out.println("}");
 
-		out.println(".sidebar a:hover{background:#146c43;padding-left:25px;}");
+		out.println(".sidebar h3{");
+		out.println("color:white;");
+		out.println("text-align:center;");
+		out.println("margin-bottom:30px;");
+		out.println("font-weight:bold;");
+		out.println("}");
 
-		out.println(".main-content{margin-left:250px;padding:30px;}");
+		out.println(".sidebar a{");
+		out.println("display:block;");
+		out.println("color:white;");
+		out.println("padding:14px 20px;");
+		out.println("text-decoration:none;");
+		out.println("transition:0.3s;");
+		out.println("font-size:16px;");
+		out.println("}");
 
-		out.println(".topbar{background:white;padding:15px 25px;border-radius:12px;box-shadow:0px 2px 10px rgba(0,0,0,0.1);margin-bottom:30px;display:flex;justify-content:space-between;align-items:center;}");
+		out.println(".sidebar a:hover{");
+		out.println("background:#146c43;");
+		out.println("padding-left:25px;");
+		out.println("}");
+
+
+		out.println(".main-content{");
+		out.println("margin-left:250px;");
+		out.println("padding:30px;");
+		out.println("}");
+
+		
+
+		out.println(".topbar{");
+		out.println("background:white;");
+		out.println("padding:15px 25px;");
+		out.println("border-radius:12px;");
+		out.println("box-shadow:0px 2px 10px rgba(0,0,0,0.1);");
+		out.println("margin-bottom:30px;");
+		out.println("display:flex;");
+		out.println("justify-content:space-between;");
+		out.println("align-items:center;");
+		out.println("}");
 
 		out.println("</style>");
 
@@ -77,6 +119,7 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("<body>");
 
+		
 		out.println("<div class='sidebar'>");
 
 		out.println("<h3>Patient Panel</h3>");
@@ -95,42 +138,38 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("</div>");
 
+		
 		out.println("<div class='main-content'>");
+
+		
 
 		out.println("<div class='topbar'>");
 
 		out.println("<div>");
-
 		out.println("<h3>Welcome Patient</h3>");
-
 		out.println("<p class='mb-0'>Hospital Management System</p>");
-
 		out.println("</div>");
 
 		out.println("<div>");
-
-		out.println("<h5 class='text-success'>"+email+"</h5>");
-
+		out.println("<h5 class='text-success'>");
+		out.println(email);
+		out.println("</h5>");
 		out.println("</div>");
 
 		out.println("</div>");
 
-		// Dashboard Home Page Only
 		if(includePage == null)
 		{
-			out.println("<div class='card shadow p-5 rounded-4 border-0'>");
+			out.println("<div class='card shadow p-5'>");
 
-			out.println("<h2 class='text-success fw-bold'>Patient Dashboard</h2>");
+			out.println("<h2 class='text-success'>Patient Dashboard</h2>");
 
-			out.println("<p class='mt-3 fs-5'>Welcome to Hospital Management System</p>");
+			out.println("<p class='mt-3'>Welcome to Hospital Management System</p>");
 
 			out.println("</div>");
 
-			// CLOSE TAGS ONLY FOR DASHBOARD
 			out.println("</div>");
-
 			out.println("</body>");
-
 			out.println("</html>");
 		}
 	}
