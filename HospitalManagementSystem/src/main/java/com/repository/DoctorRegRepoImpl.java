@@ -109,4 +109,31 @@ public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo {
 
         return null;
     }
+
+	@Override
+	public boolean changeDoctorPassword(
+			String email,
+			String oldPassword,
+			String newPassword) {
+
+				try
+				{
+					pst = con.prepareStatement(
+					"update doctors set password=? where email=? and password=?");
+
+					pst.setString(1, newPassword);
+					pst.setString(2, email);
+					pst.setString(3, oldPassword);
+
+					int val = pst.executeUpdate();
+
+					return val > 0 ? true : false;
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
+
+				return false;
+			}
 }

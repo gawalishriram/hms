@@ -17,7 +17,7 @@ public class DBconfig {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root@123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","Vyanktesh@1408");
 
             if (con != null) {
                 System.out.println("Database connected");
