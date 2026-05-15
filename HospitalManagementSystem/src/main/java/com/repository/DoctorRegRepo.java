@@ -3,6 +3,7 @@ package com.repository;
 import java.util.List;
 
 import com.model.DoctorModel;
+import com.model.PatientAppointmentModel;
 
 public interface DoctorRegRepo {
 
@@ -17,4 +18,12 @@ public interface DoctorRegRepo {
     		String email,
     		String oldPassword,
     		String newPassword);
+    public List<PatientAppointmentModel>
+    getDoctorAppointments(String email);
+
+    public boolean
+    updateAppointmentStatus(
+    int id,
+    String status);
+    
 }

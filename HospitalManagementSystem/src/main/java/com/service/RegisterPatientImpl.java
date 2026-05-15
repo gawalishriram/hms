@@ -36,11 +36,12 @@ public class RegisterPatientImpl implements RegisterPatient{
 		return patientRegRepo.getChangePasswordPatient(email,password);
 	}
 	@Override
-	public List<PatientModel> getAllPatients() {
-		
-		return patientRegRepo.getAllPatients();
+	public List<PatientModel>
+	getAllPatients(String email){
+
+		return patientRegRepo
+		.getAllPatients(email);
 	}
-	
 	
 	
 	

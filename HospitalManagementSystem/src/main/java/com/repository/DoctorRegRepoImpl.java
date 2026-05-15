@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.model.DoctorModel;
+import com.model.PatientAppointmentModel;
 
 public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo {
 
@@ -136,4 +137,86 @@ public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo {
 
 				return false;
 			}
+	@Override
+	public List<PatientAppointmentModel>
+	getDoctorAppointments(String email) {
+
+		List<PatientAppointmentModel>
+		list = new ArrayList<>();
+
+		try
+		{
+			pst = con.prepareStatement(
+
+			"SELECT a.*,p.name FROM patient_appointments a " +
+
+			"JOIN patients p ON a.patient_id=p.id " +
+
+			"JOIN doctors d ON a.doctor_id=d.id " +
+
+			"WHERE d.email=?");
+
+			pst.setString(1, email);
+
+			rs = pst.executeQuery();
+
+			while(rs.next())
+			{
+				PatientAppointmentModel m =
+				new PatientAppointmentModel();
+
+				m.setId(
+				rs.getInt("id"));
+
+				m.setPatientName(
+				rs.getString("name"));
+
+				m.setDisease(
+				rs.getString("disease"));
+
+				m.setAppointmentDate(
+				rs.getString("appointment_date"));
+
+				m.setStatus(
+				rs.getString("status"));
+
+				list.add(m);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public boolean
+	updateAppointmentStatus(
+	int id,
+	String status) {
+
+		try
+		{
+			pst = con.prepareStatement(
+
+			"update patient_appointments set status=? where id=?");
+
+			pst.setString(1, status);
+
+			pst.setInt(2, id);
+
+			int val =
+			pst.executeUpdate();
+
+			return val>0;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return false;
+	}
 }

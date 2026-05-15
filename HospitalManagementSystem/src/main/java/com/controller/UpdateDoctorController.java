@@ -17,10 +17,11 @@ public class UpdateDoctorController extends HttpServlet {
 		response.setContentType("text/html");
 		
 	}
-
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+	
 
 }

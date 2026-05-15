@@ -3,6 +3,7 @@ package com.service;
 import java.util.List;
 
 import com.model.DoctorModel;
+import com.model.PatientAppointmentModel;
 import com.repository.DoctorRegRepo;
 import com.repository.DoctorRegRepoImpl;
 
@@ -37,5 +38,25 @@ public class DoctorServiceImpl implements DoctorService {
 				email,
 				oldPassword,
 				newPassword);
+	}
+	
+	@Override
+	public List<PatientAppointmentModel>
+	getDoctorAppointments(String email) {
+
+		return doctorRegRepo
+		.getDoctorAppointments(email);
+	}
+
+	@Override
+	public boolean
+	updateAppointmentStatus(
+	int id,
+	String status) {
+
+		return doctorRegRepo
+		.updateAppointmentStatus(
+		id,
+		status);
 	}
 }

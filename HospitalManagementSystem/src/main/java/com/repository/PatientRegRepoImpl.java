@@ -117,7 +117,8 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 	}
 
 	@Override
-	public List<PatientModel> getAllPatients() {
+	public List<PatientModel>
+	getAllPatients(String email) {
 
 		List<PatientModel> list =
 		new ArrayList<>();
@@ -125,7 +126,22 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 		try
 		{
 			pst = con.prepareStatement(
-			"select * from patients");
+
+			"SELECT DISTINCT p.id,p.name,p.email,p.mobile,a.disease " +
+
+			"FROM patients p " +
+
+			"JOIN patient_appointments a " +
+
+			"ON p.id=a.patient_id " +
+
+			"JOIN doctors d " +
+
+			"ON a.doctor_id=d.id " +
+
+			"WHERE d.email=? AND a.status='Approved'");
+
+			pst.setString(1, email);
 
 			rs = pst.executeQuery();
 
@@ -145,6 +161,9 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 
 				model.setMobile(
 				rs.getLong("mobile"));
+
+				model.setDisease(
+				rs.getString("disease"));
 
 				list.add(model);
 			}

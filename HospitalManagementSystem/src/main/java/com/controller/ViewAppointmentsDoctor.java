@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import com.model.PatientModel;
-import com.service.RegisterPatient;
-import com.service.RegisterPatientImpl;
+import com.model.PatientAppointmentModel;
+import com.service.DoctorService;
+import com.service.DoctorServiceImpl;
 
-@WebServlet("/ViewPatients")
-public class ViewPatients extends HttpServlet {
+@WebServlet("/viewAppointmentsDoctor")
+public class ViewAppointmentsDoctor
+extends HttpServlet {
 
 	protected void doGet(
 	HttpServletRequest request,
@@ -41,12 +42,6 @@ public class ViewPatients extends HttpServlet {
 		String email =
 		(String) session.getAttribute("email");
 
-		if(email == null)
-		{
-			response.sendRedirect("login.html");
-			return;
-		}
-
 		request.setAttribute(
 		"includePage",
 		"yes");
@@ -57,11 +52,13 @@ public class ViewPatients extends HttpServlet {
 
 		r.include(request, response);
 
-		RegisterPatient service =
-		new RegisterPatientImpl();
+		DoctorService service =
+		new DoctorServiceImpl();
 
-		List<PatientModel> list =
-		service.getAllPatients(email);
+		List<PatientAppointmentModel>
+		list =
+		service.getDoctorAppointments(
+		email);
 
 		out.println(
 		"<div class='container-fluid' style='margin-left:300px;width:75%;padding-top:20px;'>");
@@ -73,7 +70,7 @@ public class ViewPatients extends HttpServlet {
 		"<div class='card-body p-4'>");
 
 		out.println(
-		"<h2 class='text-primary mb-4 fw-bold'>View Patients</h2>");
+		"<h2 class='text-primary mb-4 fw-bold'>My Appointments</h2>");
 
 		out.println(
 		"<table class='table table-bordered table-hover'>");
@@ -82,26 +79,37 @@ public class ViewPatients extends HttpServlet {
 		"<tr class='table-primary'>");
 
 		out.println("<th>ID</th>");
-		out.println("<th>Name</th>");
-		out.println("<th>Email</th>");
-		out.println("<th>Mobile</th>");
+		out.println("<th>Patient Name</th>");
 		out.println("<th>Disease</th>");
+		out.println("<th>Date</th>");
+		out.println("<th>Status</th>");
+		out.println("<th>Action</th>");
 
 		out.println("</tr>");
 
-		for(PatientModel model:list)
+		for(PatientAppointmentModel model:list)
 		{
 			out.println("<tr>");
 
 			out.println("<td>"+model.getId()+"</td>");
 
-			out.println("<td>"+model.getName()+"</td>");
-
-			out.println("<td>"+model.getEmail()+"</td>");
-
-			out.println("<td>"+model.getMobile()+"</td>");
+			out.println("<td>"+model.getPatientName()+"</td>");
 
 			out.println("<td>"+model.getDisease()+"</td>");
+
+			out.println("<td>"+model.getAppointmentDate()+"</td>");
+
+			out.println("<td>"+model.getStatus()+"</td>");
+
+			out.println("<td>");
+
+			out.println("<a href='updateAppointmentStatus?id="+model.getId()+"&status=Approved' class='btn btn-success btn-sm'>Accept</a>");
+
+			out.println(" ");
+
+			out.println("<a href='updateAppointmentStatus?id="+model.getId()+"&status=Rejected' class='btn btn-danger btn-sm'>Reject</a>");
+
+			out.println("</td>");
 
 			out.println("</tr>");
 		}
