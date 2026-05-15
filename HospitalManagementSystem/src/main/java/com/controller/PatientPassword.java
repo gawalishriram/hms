@@ -69,8 +69,6 @@ public class PatientPassword extends HttpServlet {
 
 		out.println("<tr class='table-success'><th width='30%'>Field</th><th>Details</th></tr>");
 
-		// Email
-
 		out.println("<tr>");
 
 		out.println("<th>Email</th>");
@@ -79,7 +77,6 @@ public class PatientPassword extends HttpServlet {
 
 		out.println("</tr>");
 
-		// Password
 
 		out.println("<tr>");
 
@@ -111,7 +108,6 @@ public class PatientPassword extends HttpServlet {
 
 		out.println("</div>");
 
-		// JavaScript
 
 		out.println("<script>");
 
@@ -132,7 +128,7 @@ public class PatientPassword extends HttpServlet {
 		out.println("}");
 
 		out.println("}");
-
+ 
 		out.println("</script>");
 
 		out.println("</div>");

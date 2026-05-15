@@ -77,16 +77,13 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("<body>");
 
-
 		out.println("<div class='sidebar'>");
 
 		out.println("<h3>Patient Panel</h3>");
 
 		out.println("<a href='patientdashboard'>Dashboard</a>");
 
-		out.println("<a href='viewDoctors'>View Doctors</a>");
-
-		out.println("<a href='bookAppointment'>Book Appointment</a>");
+		out.println("<a href='bookappointment'>Book Appointment</a>");
 
 		out.println("<a href='viewAppointments'>My Appointments</a>");
 
@@ -98,9 +95,7 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("</div>");
 
-
 		out.println("<div class='main-content'>");
-
 
 		out.println("<div class='topbar'>");
 
@@ -120,17 +115,30 @@ public class PatientDashboard extends HttpServlet {
 
 		out.println("</div>");
 
-
+		// Dashboard Home Page Only
 		if(includePage == null)
 		{
-			out.println("<div class='card shadow p-5'>");
+			out.println("<div class='card shadow p-5 rounded-4 border-0'>");
 
-			out.println("<h2 class='text-success'>Patient Dashboard</h2>");
+			out.println("<h2 class='text-success fw-bold'>Patient Dashboard</h2>");
 
-			out.println("<p class='mt-3'>Welcome to Hospital Management System</p>");
+			out.println("<p class='mt-3 fs-5'>Welcome to Hospital Management System</p>");
 
 			out.println("</div>");
-		}
 
+			// CLOSE TAGS ONLY FOR DASHBOARD
+			out.println("</div>");
+
+			out.println("</body>");
+
+			out.println("</html>");
+		}
+	}
+
+	protected void doPost(HttpServletRequest request,
+	HttpServletResponse response)
+	throws ServletException, IOException {
+
+		doGet(request, response);
 	}
 }

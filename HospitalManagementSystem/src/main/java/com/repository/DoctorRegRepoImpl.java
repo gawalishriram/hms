@@ -1,5 +1,8 @@
 package com.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.model.DoctorModel;
 
 public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo{
@@ -43,6 +46,29 @@ public class DoctorRegRepoImpl extends DBconfig implements DoctorRegRepo{
 			return false;
 		}
 		return false;
+	}
+
+	@Override
+	public List<DoctorModel> getAllDoctors() {
+		List<DoctorModel> list=new ArrayList<DoctorModel>();
+		try
+		{
+			pst=con.prepareStatement("select * from doctors");
+			rs=pst.executeQuery();
+			while(rs.next())
+			{
+				DoctorModel model=new DoctorModel();
+				model.setName(rs.getString("name"));
+				model.setSpecialization(rs.getString("specialization"));
+				model.setExperience(rs.getInt("experience"));
+				model.setId(rs.getInt("id"));
+				list.add(model);
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return list;
 	}
 
 }

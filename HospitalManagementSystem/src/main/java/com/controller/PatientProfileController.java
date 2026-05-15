@@ -23,91 +23,124 @@ public class PatientProfileController extends HttpServlet {
 	throws ServletException, IOException {
 
 		response.setContentType("text/html");
+
 		PrintWriter out = response.getWriter();
 
 		HttpSession session = request.getSession(false);
 
-		if(session == null) {
+		if(session == null)
+		{
 			response.sendRedirect("login.html");
 			return;
 		}
 
-		String email = (String) session.getAttribute("email");
+		String email =
+		(String) session.getAttribute("email");
 
-		if(email == null) {
+		if(email == null)
+		{
 			response.sendRedirect("login.html");
 			return;
 		}
 
-		RegisterPatient service = new RegisterPatientImpl();
+		RegisterPatient service =
+		new RegisterPatientImpl();
 
-		PatientModel patient = service.getPatientByEmail(email);
+		PatientModel patient =
+		service.getPatientByEmail(email);
 
-		if(patient == null) {
+		if(patient == null)
+		{
 			out.println("<h2>Patient Not Found</h2>");
 			return;
 		}
 
 		request.setAttribute("includePage", "yes");
 
-		RequestDispatcher rd = request.getRequestDispatcher("patientdashboard");
+		RequestDispatcher rd =
+		request.getRequestDispatcher("patientdashboard");
+
 		rd.include(request, response);
 
-		out.println("<div class='container-fluid'>");
 		out.println("<div class='card shadow-lg border-0 rounded-4'>");
+
 		out.println("<div class='card-body p-4'>");
 
-		out.println("<h2 class='text-success mb-4 fw-bold'>Patient Profile</h2>");
+		out.println("<h2 class='text-success fw-bold mb-4'>Patient Profile</h2>");
+
 		out.println("<form action='updatepatient' method='post'>");
-		out.println("<table class='table table-bordered table-hover'>");
 
-		out.println("<tr class='table-success'>");
-		out.println("<th width='30%'>Field</th>");
-		out.println("<th>Details</th>");
-		out.println("</tr>");
+		out.println("<div class='row'>");
 
-		out.println("<tr>");
-		out.println("<th>Name</th>");
-		out.println("<td><input type='text' name='name' class='form-control' value='"+patient.getName()+"'></td>");
-		out.println("</tr>");
+		// Name
+		out.println("<div class='col-md-6 mb-3'>");
 
-		out.println("<tr>");
-		out.println("<th>Age</th>");
-		out.println("<td><input type='number' name='age' class='form-control' value='"+patient.getAge()+"'></td>");
-		out.println("</tr>");
+		out.println("<label class='form-label fw-bold'>Name</label>");
 
-		out.println("<tr>");
-		out.println("<th>Gender</th>");
-		out.println("<td><input type='text' name='gender' class='form-control' value='"+patient.getGender()+"'></td>");
-		out.println("</tr>");
+		out.println("<input type='text' name='name' class='form-control' value='"+patient.getName()+"'>");
 
-		out.println("<tr>");
-		out.println("<th>Mobile</th>");
-		out.println("<td><input type='text' name='mobile' class='form-control' value='"+patient.getMobile()+"'></td>");
-		out.println("</tr>");
+		out.println("</div>");
 
-		out.println("<tr>");
-		out.println("<th>Email</th>");
-		out.println("<td><input type='email' readonly name='email' class='form-control' value='"+patient.getEmail()+"'></td>");
-		out.println("</tr>");
+		// Age
+		out.println("<div class='col-md-6 mb-3'>");
 
-		out.println("<tr>");
-		out.println("<th>Disease</th>");
-		out.println("<td><input type='text' name='disease' class='form-control' value='"+patient.getDisease()+"'></td>");
-		out.println("</tr>");
+		out.println("<label class='form-label fw-bold'>Age</label>");
 
-		out.println("</table>");
+		out.println("<input type='number' name='age' class='form-control' value='"+patient.getAge()+"'>");
 
-		
-		out.println("<button type='submit' class='btn btn-success'>Update Profile</button>");
+		out.println("</div>");
+
+		// Gender
+		out.println("<div class='col-md-6 mb-3'>");
+
+		out.println("<label class='form-label fw-bold'>Gender</label>");
+
+		out.println("<input type='text' name='gender' class='form-control' value='"+patient.getGender()+"'>");
+
+		out.println("</div>");
+
+		// Mobile
+		out.println("<div class='col-md-6 mb-3'>");
+
+		out.println("<label class='form-label fw-bold'>Mobile</label>");
+
+		out.println("<input type='text' name='mobile' class='form-control' value='"+patient.getMobile()+"'>");
+
+		out.println("</div>");
+
+		// Email
+		out.println("<div class='col-md-6 mb-3'>");
+
+		out.println("<label class='form-label fw-bold'>Email</label>");
+
+		out.println("<input type='email' readonly name='email' class='form-control bg-light' value='"+patient.getEmail()+"'>");
+
+		out.println("</div>");
+
+		// Disease
+		out.println("<div class='col-md-6 mb-3'>");
+
+		out.println("<label class='form-label fw-bold'>Disease</label>");
+
+		out.println("<input type='text' name='disease' class='form-control' value='"+patient.getDisease()+"'>");
+
+		out.println("</div>");
+
+		out.println("</div>");
+
+		out.println("<button type='submit' class='btn btn-success px-4 py-2 rounded-pill'>Update Profile</button>");
 
 		out.println("</form>");
 
 		out.println("</div>");
+
 		out.println("</div>");
+
+		// CLOSE TAGS HERE
 		out.println("</div>");
 
 		out.println("</body>");
+
 		out.println("</html>");
 	}
 
