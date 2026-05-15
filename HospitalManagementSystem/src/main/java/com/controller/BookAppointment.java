@@ -136,25 +136,15 @@ public class BookAppointment extends HttpServlet {
 		{
 			out.println("<div class='col-md-4 mb-4'>");
 
-
-
 			out.println("<div class='card doctor-card shadow-lg p-4'>");
 
-
-
-			
-
 			out.println("<img src='https://cdn-icons-png.flaticon.com/512/3774/3774299.png' class='doctor-img'>");
-
-
 
 			// doctor name
 
 			out.println("<h3 class='doctor-name'>");
 			out.println("Dr. " + m.getName());
 			out.println("</h3>");
-
-
 
 			// specialization
 
@@ -163,8 +153,6 @@ public class BookAppointment extends HttpServlet {
 			+ m.getSpecialization());
 			out.println("</p>");
 
-
-
 			// experience
 
 			out.println("<p class='doctor-info'>");
@@ -172,8 +160,6 @@ public class BookAppointment extends HttpServlet {
 			+ m.getExperience()
 			+ " Years");
 			out.println("</p>");
-
-
 
 			// button
 

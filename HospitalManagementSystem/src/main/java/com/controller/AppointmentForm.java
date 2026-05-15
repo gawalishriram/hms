@@ -50,19 +50,16 @@ public class AppointmentForm extends HttpServlet {
 		}
 
 		
-		RegisterPatient service =
-		new RegisterPatientImpl();
+		RegisterPatient service = new RegisterPatientImpl();
 
-		PatientModel patient =
-		service.getPatientByEmail(email);
+		PatientModel patient =service.getPatientByEmail(email);
 
 		
 		String patientName = patient.getName();
 
 		request.setAttribute("includePage", "yes");
 
-		RequestDispatcher r =
-		request.getRequestDispatcher("patientdashboard");
+		RequestDispatcher r =request.getRequestDispatcher("patientdashboard");
 
 		r.include(request, response);
 
@@ -164,53 +161,21 @@ public class AppointmentForm extends HttpServlet {
 		// FORM START
 		out.println("<form action='patientappointment' method='post'>");
 
-		// DOCTOR ID
-		out.println("<input type='hidden' "
-		+ "name='doctorid' "
-		+ "value='"+id+"'>");
+		out.println("<input type='hidden' name='did' value='"+id+"'>");
+
+		out.println("<input type='hidden' name='pid' value='"+patient.getId()+"'>");
 
 		// PATIENT NAME
-		out.println("<div class='mb-4'>");
-
-		out.println("<label class='form-label'>Patient Name</label>");
-
-		out.println("<input type='text' "
-		+ "value='"+patientName+"' "
-		+ "name='patientname' "
-		+ "class='form-control bg-light' "
-		+ "readonly>");
-
-		out.println("</div>");
+		out.println("<div class='mb-4'><label class='form-label'>Patient Name</label><input type='text' value='"+patientName+"' name='patientName' class='form-control bg-light' readonly></div>");
 
 		// DATE
-		out.println("<div class='mb-4'>");
-
-		out.println("<label class='form-label'>Appointment Date</label>");
-
-		out.println("<input type='date' "
-		+ "name='appointmentdate' "
-		+ "class='form-control' required>");
-
-		out.println("</div>");
+		out.println("<div class='mb-4'><label class='form-label'>Appointment Date</label><input type='date' name='appointmentdate' class='form-control' required></div>");
 
 		// TIME
-		out.println("<div class='mb-4'>");
-
-		out.println("<label class='form-label'>Appointment Time</label>");
-
-		out.println("<input type='time' "
-		+ "name='appointmenttime' "
-		+ "class='form-control' required>");
-
-		out.println("</div>");
+		out.println("<div class='mb-4'><label class='form-label'>Appointment Time</label><input type='time' name='appointmenttime' class='form-control' required></div>");
 
 		// BUTTON
-		out.println("<button type='submit' "
-		+ "class='btn book-btn w-100 text-white'>");
-
-		out.println("Confirm Appointment");
-
-		out.println("</button>");
+		out.println("<button type='submit' class='btn book-btn w-100 text-white'>Confirm Appointment</button>");
 
 		out.println("</form>");
 
