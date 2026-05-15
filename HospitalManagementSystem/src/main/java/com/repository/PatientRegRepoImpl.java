@@ -1,6 +1,7 @@
 package com.repository;
 
 import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.model.PatientModel;
@@ -115,7 +116,46 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 		return false;
 	}
 
-	
+	@Override
+	public List<PatientModel> getAllPatients() {
+
+		List<PatientModel> list =
+		new ArrayList<>();
+
+		try
+		{
+			pst = con.prepareStatement(
+			"select * from patients");
+
+			rs = pst.executeQuery();
+
+			while(rs.next())
+			{
+				PatientModel model =
+				new PatientModel();
+
+				model.setId(
+				rs.getInt("id"));
+
+				model.setName(
+				rs.getString("name"));
+
+				model.setEmail(
+				rs.getString("email"));
+
+				model.setMobile(
+				rs.getLong("mobile"));
+
+				list.add(model);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
 
 }

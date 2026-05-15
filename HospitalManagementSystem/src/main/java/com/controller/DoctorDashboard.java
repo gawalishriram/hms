@@ -21,7 +21,6 @@ public class DoctorDashboard extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        // SESSION CHECK
         HttpSession session = request.getSession(false);
 
         if (session == null) {
@@ -36,7 +35,6 @@ public class DoctorDashboard extends HttpServlet {
             return;
         }
 
-        // HTML START
         out.println("<!DOCTYPE html>");
         out.println("<html lang='en'>");
 
@@ -47,7 +45,6 @@ public class DoctorDashboard extends HttpServlet {
 
         out.println("<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>");
 
-        // CSS
         out.println("<style>");
 
         out.println("body{ margin:0; font-family:Segoe UI,sans-serif; background:#f4f6f9; }");
@@ -75,13 +72,18 @@ public class DoctorDashboard extends HttpServlet {
 
         out.println("<h3>Doctor Panel</h3>");
 
-        out.println("<a href='doctordashboard'>Dashboard</a>");
+        String includePage =
+        request.getParameter("includePage");
 
-        out.println("<a href='viewAppointmentsDoctor'>My Appointments</a>");
+        if(includePage == null)
+        {
+            out.println("<a href='doctordashboard'>Dashboard</a>");
 
-        out.println("<a href='viewPatients'>View Patients</a>");
+            out.println("<a href='viewAppointmentsDoctor'>My Appointments</a>");
 
-        // IMPORTANT CHANGE HERE
+            out.println("<a href='ViewPatients'>View Patients</a>");
+        }
+
         out.println("<a href='doctorprofile'>Profile</a>");
 
         out.println("<a href='changePasswordDoctor'>Change Password</a>");
@@ -105,12 +107,6 @@ public class DoctorDashboard extends HttpServlet {
         out.println("<h5 class='text-primary'>" + email + "</h5>");
         out.println("</div>");
 
-        out.println("</div>");
-
-        // DASHBOARD CARD
-        out.println("<div class='card shadow p-5'>");
-        out.println("<h2 class='text-primary'>Doctor Dashboard</h2>");
-        out.println("<p class='mt-3'>Manage your patients and appointments efficiently.</p>");
         out.println("</div>");
 
         out.println("</div>");
