@@ -86,6 +86,7 @@ public class ViewPatients extends HttpServlet {
 		out.println("<th>Email</th>");
 		out.println("<th>Mobile</th>");
 		out.println("<th>Disease</th>");
+		out.println("<th>Date & Time<th>");
 
 		out.println("</tr>");
 
@@ -102,6 +103,8 @@ public class ViewPatients extends HttpServlet {
 			out.println("<td>"+model.getMobile()+"</td>");
 
 			out.println("<td>"+model.getDisease()+"</td>");
+			
+			out.println("<td>"+model.getAppointmentDate()+"</td>");
 
 			out.println("</tr>");
 		}

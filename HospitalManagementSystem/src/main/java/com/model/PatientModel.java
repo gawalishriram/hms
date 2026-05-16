@@ -13,5 +13,6 @@ public class PatientModel {
     private long mobile;
     private String disease;
     private String password;
+    private String appointmentDate;
     private String email;
 }

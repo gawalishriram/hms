@@ -127,7 +127,7 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 		{
 			pst = con.prepareStatement(
 
-			"SELECT DISTINCT p.id,p.name,p.email,p.mobile,a.disease " +
+			"SELECT DISTINCT p.id,p.name,p.email,p.mobile,a.disease,a.appointment_date " +
 
 			"FROM patients p " +
 
@@ -164,6 +164,7 @@ public class PatientRegRepoImpl extends DBconfig implements PatientRegRepo{
 
 				model.setDisease(
 				rs.getString("disease"));
+				model.setAppointmentDate(rs.getString("appointment_date"));
 
 				list.add(model);
 			}

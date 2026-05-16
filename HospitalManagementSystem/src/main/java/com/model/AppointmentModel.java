@@ -16,5 +16,5 @@ public class AppointmentModel {
 
     private String appointmentDate;
     private String status;
-
+    private String disease;
 }

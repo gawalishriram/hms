@@ -79,9 +79,9 @@ public class DoctorDashboard extends HttpServlet {
         {
             out.println("<a href='doctordashboard'>Dashboard</a>");
 
-            out.println("<a href='viewAppointmentsDoctor'>My Appointments</a>");
+            out.println("<a href='viewAppointmentsDoctor'>Appointments Request</a>");
 
-            out.println("<a href='ViewPatients'>View Patients</a>");
+            out.println("<a href='ViewPatients'>My Appointments</a>");
         }
 
         out.println("<a href='doctorprofile'>Profile</a>");

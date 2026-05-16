@@ -5,12 +5,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import com.model.AppointmentModel;
+import com.model.PatientModel;
 import com.service.AppointmentService;
 import com.service.AppointmentServiceImpl;
+import com.service.RegisterPatient;
+import com.service.RegisterPatientImpl;
 
 @WebServlet("/patientappointment")
 public class PatientAppointment extends HttpServlet {
@@ -22,14 +27,29 @@ public class PatientAppointment extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
+		//request.getParameter("pid")
+		// add session logic here and remove above method 
 
-		String pid = request.getParameter("pid");
+		HttpSession session =request.getSession(false);
+
+				String email =
+				(String) session.getAttribute("email");
+
+				RegisterPatient patientService =
+				new RegisterPatientImpl();
+
+				PatientModel patient =
+				patientService.getPatientByEmail(email);
+				String patientName =patient.getName();
+// add new above method
+				long pid =
+				patient.getId();
 
 		String did = request.getParameter("did");
 
-		String patientName =
-		request.getParameter("patientName");
-
+		//String patientName =
+		//request.getParameter("patientName");
+		// remove above code
 		String dName =
 		request.getParameter("dName");
 
@@ -44,15 +64,19 @@ public class PatientAppointment extends HttpServlet {
 		AppointmentModel model =
 		new AppointmentModel();
 
-		model.setPatientId(Long.parseLong(pid));
+		model.setPatientId(pid);
 
 		model.setDoctorId(Long.parseLong(did));
 
-		model.setPatientName(patientName);
-
+		//model.setPatientName(patientName);
+		// above code 
 		model.setDoctorName(dName);
-
+		model.setPatientName(patientName);
+		// add new method above
 		model.setAppointmentDate(dateTime);
+		model.setDisease(patient.getDisease());
+		//add new above mehthod
+		
 
 		model.setStatus("Pending");
 

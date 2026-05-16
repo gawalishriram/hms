@@ -14,7 +14,8 @@ implements AppointmentRepo {
 		try {
 
 			pst = con.prepareStatement(
-			"insert into appointments values(0,?,?,?,?,?,?)");
+
+			"insert into patient_appointments(patient_id,doctor_id,disease,appointment_date,status) values(?,?,?,?,?)");
 
 			pst.setLong(1,
 			model.getPatientId());
@@ -23,15 +24,12 @@ implements AppointmentRepo {
 			model.getDoctorId());
 
 			pst.setString(3,
-			model.getPatientName());
+			model.getDisease());
 
 			pst.setString(4,
-			model.getDoctorName());
-
-			pst.setString(5,
 			model.getAppointmentDate());
 
-			pst.setString(6,
+			pst.setString(5,
 			model.getStatus());
 
 			int val = pst.executeUpdate();
@@ -46,7 +44,6 @@ implements AppointmentRepo {
 
 		return false;
 	}
-
 	@Override
 	public List<AppointmentModel>
 	getPatientAppointments(long pid) {
@@ -58,8 +55,29 @@ implements AppointmentRepo {
 
 			pst = con.prepareStatement(
 
-			"SELECT patient_name, doctor_name, appointment_date, status FROM appointments WHERE patient_id=? ORDER BY appointment_date DESC");
+					"SELECT p.name AS patient_name," +
 
+					"d.name AS doctor_name," +
+
+					"a.appointment_date," +
+
+					"a.status " +
+
+					"FROM patient_appointments a " +
+
+					"JOIN patients p " +
+
+					"ON a.patient_id=p.id " +
+
+					"JOIN doctors d " +
+
+					"ON a.doctor_id=d.id " +
+
+					"WHERE a.patient_id=? " +
+
+					"ORDER BY a.appointment_date DESC");
+
+					pst.setLong(1,pid);
 			pst.setLong(1, pid);
 
 			rs = pst.executeQuery();

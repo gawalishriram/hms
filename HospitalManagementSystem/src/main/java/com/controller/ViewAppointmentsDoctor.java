@@ -81,7 +81,7 @@ extends HttpServlet {
 		out.println("<th>ID</th>");
 		out.println("<th>Patient Name</th>");
 		out.println("<th>Disease</th>");
-		out.println("<th>Date</th>");
+		out.println("<th>Date & Time</th>");
 		out.println("<th>Status</th>");
 		out.println("<th>Action</th>");
 

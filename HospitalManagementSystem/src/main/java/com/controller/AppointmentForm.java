@@ -163,8 +163,8 @@ public class AppointmentForm extends HttpServlet {
 
 		out.println("<input type='hidden' name='did' value='"+id+"'>");
 
-		out.println("<input type='hidden' name='pid' value='"+patient.getId()+"'>");
-
+		//out.println("<input type='hidden' name='pid' value='"+patient.getId()+"'>");
+			//delet above line 
 		// PATIENT NAME
 		out.println("<div class='mb-4'><label class='form-label'>Patient Name</label><input type='text' value='"+patientName+"' name='patientName' class='form-control bg-light' readonly></div>");
 
